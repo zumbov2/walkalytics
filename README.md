@@ -7,15 +7,14 @@ install.packages("devtools")
 devtools::install_github("zumbov2/walkalytics")
 ```
 ## Example 1: Albert Einstein's life in Aarau
-After failing the entrance examination for ETH Zurich, Albert Einstein attended the "Alte Kantonsschule Aarau" to complete
-his secondary schooling (read more [here](https://en.wikipedia.org/wiki/Albert_Einstein#Early_life_and_education)). 
-
+After failing the entrance examination for ETH Zurich, Albert Einstein attended the "Alte Kantonsschule Aarau" to complete his secondary schooling (read more [here](https://en.wikipedia.org/wiki/Albert_Einstein#Early_life_and_education)). Some say that Einstein was sent to Aarau only because there was much less distraction in the provincial nest than in the city of Zurich. Let's look for some evidence.
 ```
 # Define points-of-interest 
 places <- data.frame(id = c("School", "Railway Station", "Affenkasten Bar", "River Island Zurlinden"),
                      x = c(895737, 896297, 895620, 895840),
                      y = c(6006558, 6006247, 6006171, 6007080))
 
+# Call Walkalytics API and extract walking times to points-of-interest
 isochrone_pois(x = 896552, y = 6006578, pois = pupils, key = key) %>% pois_walktimes()
 
 # A tibble: 4 x 4
@@ -26,4 +25,4 @@ isochrone_pois(x = 896552, y = 6006578, pois = pupils, key = key) %>% pois_walkt
 3 River Island Zurlinden      470 895840 6007080
 4 Affenkasten Bar             500 895620 6006171
 ```
-
+They had a point...and the rest is history. ;-)
