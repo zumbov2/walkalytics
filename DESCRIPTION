@@ -1,0 +1,19 @@
+Package: walkalytics
+Type: Package
+Title: Interface to the Walkalytics API for Calculating Walking
+        Isochrones
+Version: 0.1.0
+Authors@R: person("David", "Zumbach", role = c("aut", "cre"), email = "david.zumbach@gfzb.ch")
+Description: A wrapper for the walkalytics API (see <https://dev.walkalytics.com/>), which is a web service
+    that calculates walking isochrones for source locations.  Basic, limited API access is free.
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+URL: https://dev.walkalytics.com
+BugReports: https://github.com/gfzb/walkalytics/issues
+RoxygenNote: 6.0.1
+Imports: httr, dplyr, stringr, purrr, tibble, base64enc, sp
+NeedsCompilation: no
+Packaged: 2018-04-22 21:06:30 UTC; David Zumbach
+Author: David Zumbach [aut, cre]
+Maintainer: David Zumbach <david.zumbach@gfzb.ch>
