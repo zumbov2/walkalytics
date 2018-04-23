@@ -31,7 +31,7 @@ isochrone_pois(x = 896552, y = 6006578, epsg = 3857, pois = places, key = key) %
 Lucky Albert. He can save his money. Read more about Albert's life [here](https://en.wikipedia.org/wiki/Albert_Einstein#Early_life_and_education).
 
 ## Example 2: More details please
-We can go one step further and extract high-resolution walking times. For this we use the function `isochrone_esri()`, which returns a response object that contains a base64-encoded gzipped Esri ASCII grid with walking times for every pixel. By using the function `esri_to_sgdf()`, we can convert the encoded Esri ASCII grid to an object of class SpatialPixelsDataFrame or we use `pixel_walktimes()` to directly extract walking times (in seconds) for every pixel with respect to the source location.
+We can go one step further and extract high-resolution walking times. For this we use the function `isochrone_esri()`, which returns a response object that contains a base64-encoded gzipped Esri ASCII grid with walking times for every pixel. By using the function `esri_to_sgdf()`, we can convert the encoded Esri ASCII grid to an object of class `SpatialPixelsDataFrame` or we use `pixel_walktimes()` to directly extract walking times (in seconds) for every pixel with respect to the source location.
 ```
 # Call Walkalytics API and convert response object to SpatialPixelsDataFrame
 dt <- isochrone_esri(x = 896552, y = 6006578, epsg = 3857, key = key) %>% esri_to_sgdf()
