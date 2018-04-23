@@ -31,9 +31,9 @@ isochrone_pois(x = 896552, y = 6006578, epsg = 3857, pois = places, key = key) %
 Lucky Albert. He can save his money. Read more about Albert's life [here](https://en.wikipedia.org/wiki/Albert_Einstein#Early_life_and_education).
 
 ## Example 2: More details please
-We can go one step further and extract high-resolution walking times. For this we use the function `isochrone_esri()`, which returns a response object that contains a base64-encoded gzipped Esri ASCII grid with walking times for every pixel. By using the function `esri_to_sgdf()`, we can convert the encoded Esri ASCII grid to an object of class `SpatialPixelsDataFrame` or we use `pixel_walktimes()` to directly extract walking times (in seconds) for every pixel with respect to the source location.
+We can go one step further and extract high-resolution walking times. For this we use the function `isochrone_esri()`, which returns a response object that contains a base64-encoded gzipped Esri ASCII grid with walking times for every pixel. By using the function `esri_to_sgdf()`, we can convert the encoded Esri ASCII grid to an object of class `SpatialGridDataFrame` or we use `pixel_walktimes()` to directly extract walking times (in seconds) for every pixel with respect to the source location.
 ```
-# Call Walkalytics API and convert response object to SpatialPixelsDataFrame
+# Call Walkalytics API and convert response object to SpatialGridDataFrame
 dt <- isochrone_esri(x = 896552, y = 6006578, epsg = 3857, key = key) %>% esri_to_sgdf()
 
 # Call Walkalytics API and extract walking times for every pixel
@@ -64,6 +64,6 @@ pubtrans_ch_nearby(x = 8.528872, y = 47.382902, max_walktime = 10, key = key) %>
 7 Zürich, Dammweg                   9.20 2                8.526392 47.388490 WGS84            Bus_Tram           8591110
 ```
 ## More
-Walkalytics also offers the possibility to save isochrones as PNG images (`isochrone_png() %>% save_png()`). 
+Walkalytics also offers the possibility to save isochrones with freely selectable break values as PNG images (`isochrone_png() %>% save_png()`). 
 
 **Happy testing!**
