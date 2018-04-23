@@ -7,31 +7,31 @@ Install the package with:
 install.packages("devtools")
 devtools::install_github("zumbov2/walkalytics")
 ```
-## Example 1: Albert Einstein's life in Aarau
-After failing the entrance examination for ETH Zurich, Albert Einstein attended the "Alte Kantonsschule Aarau" to complete his secondary schooling (read more [here](https://en.wikipedia.org/wiki/Albert_Einstein#Early_life_and_education)). Some say that Einstein was sent to Aarau only because there was much less distraction in the provincial nest than in the city of Zurich. Let's look for some evidence.
+## Example 1: Albert's life in Aarau
+Young Albert failed the entrance examination for ETH Zurich. The 16-year-old is now to move to Aarau to complete his secondary schooling. He doesn't know the town yet and is thinking about buying a bike for his everday life. Let's help Albert decide. He doesn't want to have to walk longer than 10 minutes. 
 
-We define some points-of-interest and call the walkalytics API with respect to a source location (Einstein's former address). The function `pois_walktimes()` processes the API response object in such a way that the estimated walking times between the source location and the points-of-interest are returned.
+We define the blokes's most important points-of-interest and call the walkalytics API with the function `isochrome_pois()`. We take Albert's future address as the source location. The function `pois_walktimes()` processes the API response object in such a way that the estimated walking times (in seconds) between the source location and the points-of-interest are returned.
 ```
-# Define points-of-interest 
-places <- data.frame(id = c("School", "Railway Station", "Affenkasten Bar", "River Island Zurlinden"),
+# Define Albert's points-of-interest 
+places <- data.frame(id = c("School", "Railway Station", "Affenkasten (Pub)", "Zurlindeninsel (River Island)"),
                      x = c(895737, 896297, 895620, 895840),
                      y = c(6006558, 6006247, 6006171, 6007080))
 
 # Call Walkalytics API and extract walking times to points-of-interest
-isochrone_pois(x = 896552, y = 6006578, epsg = 3857, pois = pupils, key = key) %>% pois_walktimes()
+isochrone_pois(x = 896552, y = 6006578, epsg = 3857, pois = places, key = key) %>% pois_walktimes()
 
 # A tibble: 4 x 4
-  id                     walktime      x       y
-  <chr>                     <int>  <int>   <int>
-1 Railway Station             184 896297 6006247
-2 School                      348 895737 6006558
-3 River Island Zurlinden      470 895840 6007080
-4 Affenkasten Bar             500 895620 6006171
+  id                            walktime      x       y
+  <chr>                            <int>  <int>   <int>
+1 Railway Station                    184 896297 6006247
+2 School                             348 895737 6006558
+3 Zurlindeninsel (River Island)      470 895840 6007080
+4 Affenkasten (Pub)                  500 895620 6006171
 ```
-They had a point...and the rest is history. ;-)
+Lucky Albert. He can save his money. Read more about Albert's life [here](https://en.wikipedia.org/wiki/Albert_Einstein#Early_life_and_education).
 
 ## Example 2: More details please
-We can go one step further and extract high-resolution walking times. For this we use the functions `isochrone_esri()`, which returns a response object that contains a base64-encoded gzipped Esri ASCII grid with walking times for every pixel. By using the function `esri_to_sgdf()`, we can convert the encoded Esri ASCII grid to an object of class SpatialPixelsDataFrame or we use `pixel_walktimes()` to directly extract walking times (in seconds) for every pixel with respect to the source location.
+We can go one step further and extract high-resolution walking times. For this we use the function `isochrone_esri()`, which returns a response object that contains a base64-encoded gzipped Esri ASCII grid with walking times for every pixel. By using the function `esri_to_sgdf()`, we can convert the encoded Esri ASCII grid to an object of class SpatialPixelsDataFrame or we use `pixel_walktimes()` to directly extract walking times (in seconds) for every pixel with respect to the source location.
 ```
 # Call Walkalytics API and convert response object to SpatialPixelsDataFrame
 dt <- isochrone_esri(x = 896552, y = 6006578, epsg = 3857, key = key) %>% esri_to_sgdf()
@@ -39,30 +39,29 @@ dt <- isochrone_esri(x = 896552, y = 6006578, epsg = 3857, key = key) %>% esri_t
 # Call Walkalytics API and extract walking times for every pixel
 dt2 <- isochrone_esri(x = 896552, y = 6006578, epsg = 3857, key = key) %>% pixel_walktimes()
 ```
-
+`dt` can then be displayed graphically using `image()`
+```
+require(viridisLite)
+image(dt, col = magma(10, direction = -1))
+```
 ## Example 3: Public transportation stops for Switzerland
 Beside the isochrone API Walkalytics also offers the possibility of querying nearby public transport stops. The query works in the almost same way as the previous examples. 
 ```
 # Call the Walkalytics pubtrans API and extract the walking times to the stations
-pubtrans_ch_nearby(x = 8.0526331, y = 47.3933375, max_walktime = 10, key = key) %>% get_stops()  
+pubtrans_ch_nearby(x = 8.528872, y = 47.382902, max_walktime = 10, key = key) %>% get_stops()  
 
-# A tibble: 13 x 8
-   name                  walktime station_category latitude longitude coordinates_type transport_category id     
-   <chr>                    <dbl> <chr>            <chr>    <chr>     <chr>            <chr>              <chr>  
- 1 Aarau, Bahnhof            1.90 2                8.051008 47.391860 WGS84            Bus                8502996
- 2 Aarau, Gais               5.20 3                8.056074 47.391276 WGS84            Bus                8590142
- 3 Aarau, Kasinopark         5.20 99               8.046865 47.392143 WGS84            Bus                8594929
- 4 Aarau, Berufsschule       6.00 4                8.055041 47.397029 WGS84            Bus                8590134
- 5 Aarau, Kunsthaus          6.30 3                8.046240 47.390788 WGS84            Bus                8578642
- 6 Aarau, Holzmarkt          6.80 2                8.045527 47.392123 WGS84            Bus                8578643
- 7 Aarau, Obere Vorstadt     6.90 4                8.047667 47.389324 WGS84            Bus                8590152
- 8 Aarau, Friedhof           8.30 5                8.046799 47.388636 WGS84            Bus                8590141
- 9 Aarau, Rathaus            9.00 2                8.043019 47.394025 WGS84            Bus                8578644
-10 Aarau, Buchenhof          9.10 5                8.050706 47.387545 WGS84            Bus                8590136
-11 Aarau, Herzogplatz        9.50 5                8.055592 47.387366 WGS84            Bus                8590146
-12 Aarau, Tellizentrum       9.90 4                8.059063 47.397772 WGS84            Bus                8590156
-13 Aarau, Kettenbrücke       9.90 99               8.042286 47.394847 WGS84            Bus                8594930
+# A tibble: 7 x 8
+  name                          walktime station_category latitude longitude coordinates_type transport_category id     
+  <chr>                            <dbl> <chr>            <chr>    <chr>     <chr>            <chr>              <chr>  
+1 Zürich, Röntgenstrasse            1.30 3                8.529264 47.381932 WGS84            Bus                8591322
+2 Zürich, Limmatplatz               3.40 2                8.531623 47.384600 WGS84            Bus_Tram           8591257
+3 Zürich, Militär-/Langstrasse      4.40 2                8.527627 47.379600 WGS84            Bus                8591277
+4 Zürich, Quellenstrasse            6.10 2                8.528753 47.386740 WGS84            Bus_Tram           8591306
+5 Zürich, Kanonengasse              7.70 3                8.530306 47.378468 WGS84            Bus                8591219
+6 Zürich, Museum für Gestaltung     8.50 2                8.534937 47.382121 WGS84            Bus_Tram           8591282
+7 Zürich, Dammweg                   9.20 2                8.526392 47.388490 WGS84            Bus_Tram           8591110
 ```
-
 ## More
-Walkalytics also offers the possibility to save isochrones as PNG images (`isochrone_png() %>% save_png()`). Happy testing.
+Walkalytics also offers the possibility to save isochrones as PNG images (`isochrone_png() %>% save_png()`). 
+
+**Happy testing**
