@@ -11,7 +11,7 @@ esri_to_sgdf(isochrone_esri)
 }
 \description{
 \code{esri_to_sgdf} converts a response object from a \link[walkalytics]{isochrone_esri} call to the \code{walkalytics} isochrone API to
-   an object of class \link[sp]{SpatialPixelsDataFrame-class}.
+   an object of class \link[sp]{SpatialGridDataFrame-class}.
 }
 \examples{
 \dontrun{

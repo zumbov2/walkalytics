@@ -14,6 +14,6 @@ BugReports: https://github.com/gfzb/walkalytics/issues
 RoxygenNote: 6.0.1
 Imports: httr, dplyr, stringr, purrr, tibble, base64enc, sp
 NeedsCompilation: no
-Packaged: 2018-04-22 21:06:30 UTC; David Zumbach
+Packaged: 2018-04-23 09:18:38 UTC; David Zumbach
 Author: David Zumbach [aut, cre]
 Maintainer: David Zumbach <david.zumbach@gfzb.ch>

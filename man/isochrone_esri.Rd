@@ -20,7 +20,7 @@ isochrone_esri(x, y, epsg = 3857, max_min = 1000,
 }
 \value{
 The \link[httr]{response} object from the request. Use \link[walkalytics]{esri_to_sgdf} to convert the base64-encoded
-    gzipped Esri ASCII grid to an object of class \link[sp]{SpatialPixelsDataFrame-class}. Use \link[walkalytics]{pixel_walktimes}
+    gzipped Esri ASCII grid to an object of class \link[sp]{SpatialGridDataFrame-class}. Use \link[walkalytics]{pixel_walktimes}
     to directly extract walking times for every pixel.
 }
 \description{
