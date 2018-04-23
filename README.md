@@ -1,8 +1,15 @@
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/walkalytics)](https://cran.r-project.org/package=walkalytics)
+[![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+
 # Walkalytics
 This R package is an interface to the [Walkalytics API](https://dev.walkalytics.com) that calculates the walking isochrone for a source location based on map data. To get an API key, you need to register at https://dev.walkalytics.com/signin. With the free starter account, you can make up to 100 calls a week to the API. More information (geographical availability of the service etc.) can be found [here](https://www.walkalytics.com). 
 
 ## Installation
-Install the package with:
+The version 0.1.0 is on CRAN, and you can install it by:
+```
+install.packages("walkalytics")
+```
+For regularly updated version (latest: 0.1.0), install from GitHub:
 ```
 install.packages("devtools")
 devtools::install_github("zumbov2/walkalytics")
