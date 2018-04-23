@@ -27,7 +27,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Generate set of POIs
 #' x <- c(895777, 896044, 895639)
 #' y <- c(6004833, 6004886, 6005147)
@@ -74,7 +74,7 @@ isochrone_pois <- function(x, y, epsg = 3857, max_min = 1000, pois, key = "my_wa
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Generate set of POIs
 #' x <- c(895777, 896044, 895639)
 #' y <- c(6004833, 6004886, 6005147)

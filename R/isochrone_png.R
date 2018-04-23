@@ -23,7 +23,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' isochrone_png(x = 895815, y = 6004839, key = "abcd1234")
 #' }
 #'
@@ -53,8 +53,9 @@ isochrone_png <- function(x, y, epsg = 3857, max_min = 1000, break_values = c(0,
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' isochrone_png(x = 896488, y = 6006502, key = "abcd1234") %>% save_png("new.png")
+#' \donttest{
+#' isochrone_png(x = 896488, y = 6006502, key = "abcd1234") %>%
+#'     save_png(tempfile(pattern = "file", fileext = ".png"))
 #' }
 
 save_png <- function(isochrone_png, file = "isochrone.png") {

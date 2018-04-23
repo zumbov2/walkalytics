@@ -16,7 +16,8 @@ save_png(isochrone_png, file = "isochrone.png")
     saves it to file.
 }
 \examples{
-\dontrun{
-isochrone_png(x = 896488, y = 6006502, key = "abcd1234") \%>\% save_png("new.png")
+\donttest{
+isochrone_png(x = 896488, y = 6006502, key = "abcd1234") \%>\%
+    save_png(tempfile(pattern = "file", fileext = ".png"))
 }
 }

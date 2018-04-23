@@ -14,7 +14,7 @@ esri_to_sgdf(isochrone_esri)
    an object of class \link[sp]{SpatialGridDataFrame-class}.
 }
 \examples{
-\dontrun{
+\donttest{
 isochrone_esri(x = 895815, y = 6004839, key = "abcd1234") \%>\% esri_to_sgdf()
 }
 

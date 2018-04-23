@@ -27,7 +27,7 @@ To get an API key, you need to register at \url{https://dev.walkalytics.com/sign
     With the free starter account, you can make up to 100 calls a week to the API.
 }
 \examples{
-\dontrun{
+\donttest{
 # Generate set of POIs
 x <- c(895777, 896044, 895639)
 y <- c(6004833, 6004886, 6005147)

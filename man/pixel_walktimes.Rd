@@ -21,7 +21,7 @@ A \code{data.frame} (\code{tibble::tibble}) that contains:
 \code{pixel_walktimes} extracts walking times for every pixel from a response object from a \link[walkalytics]{isochrone_esri} call.
 }
 \examples{
-\dontrun{
+\donttest{
 isochrone_esri(x = 896488, y = 6006502, key = "abcd1234") \%>\% pixel_walktimes()
 }
 

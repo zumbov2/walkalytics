@@ -32,7 +32,7 @@ To get an API key, you need to register at \url{https://dev.walkalytics.com/sign
     With the free starter account, you can make up to 100 calls a week to the API.
 }
 \examples{
-\dontrun{
+\donttest{
 isochrone_esri(x = 895815, y = 6004839, key = "abcd1234")
 }
 

@@ -36,7 +36,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' isochrone(x = 895815, y = 6004839, key = "abcd1234")
 #' }
 #'

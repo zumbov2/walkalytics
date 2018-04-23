@@ -20,7 +20,7 @@
 #' @export
 
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' pubtrans_ch_nearby(x = 8.0526331, y = 47.3933375, max_walktime = 10, key = "abcd1234")
 #' }
 
@@ -77,7 +77,7 @@ pubtrans_ch_nearby <- function(x, y, max_walktime = 10, key = "my_walkalytics_ke
 #' @export
 
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' pubtrans_ch_nearby(x = 8.05, y = 47.3, key = "abcd1234") %>% get_stops()
 #' }
 #'

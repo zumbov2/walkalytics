@@ -27,7 +27,7 @@ To get an API key, you need to register at \url{https://dev.walkalytics.com/sign
     With the free starter account, you can make up to 100 calls a week to the API.
 }
 \examples{
-\dontrun{
+\donttest{
 pubtrans_ch_nearby(x = 8.0526331, y = 47.3933375, max_walktime = 10, key = "abcd1234")
 }
 }
