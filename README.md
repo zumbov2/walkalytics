@@ -47,7 +47,7 @@ image(dt, col = magma(10, direction = -1))
 ![example](https://github.com/zumbov2/walkalytics/blob/master/images/aarau1.png)
 
 ## Example 3: Public transportation stops for Switzerland
-Beside the isochrone API Walkalytics also offers the possibility of querying nearby public transport stops. The query works in the almost same way as the previous examples. 
+Beside the isochrone API Walkalytics also offers the possibility of querying [nearby public transportation stops](https://dev.walkalytics.com/docs/services/54213b7b352a401664d5c48a/operations/5551ed9350d8000f54f144a2?). The query works in the almost same way as the previous examples. 
 ```
 # Call the Walkalytics pubtrans API and extract the walking times to the stations
 pubtrans_ch_nearby(x = 8.528872, y = 47.382902, max_walktime = 10, key = key) %>% get_stops()  
@@ -66,4 +66,4 @@ pubtrans_ch_nearby(x = 8.528872, y = 47.382902, max_walktime = 10, key = key) %>
 ## More
 Walkalytics also offers the possibility to save isochrones as PNG images (`isochrone_png() %>% save_png()`). 
 
-**Happy testing**
+**Happy testing!**
