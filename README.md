@@ -7,12 +7,12 @@
 This R package is an interface to the [Walkalytics API](https://dev.walkalytics.com) that calculates the walking isochrone for a source location based on map data. To get an API key, you need to register at https://dev.walkalytics.com/signin. With the free starter account, you can make up to 100 calls a week to the API. More information (geographical availability of the service etc.) can be found [here](https://www.walkalytics.com). 
 
 ## Installation
-The version 0.1.0 is on CRAN, and you can install it by:
-```
+Version 0.1.0 is on CRAN, and you can install it by:
+```r
 install.packages("walkalytics")
 ```
 For regularly updated version (latest: 0.1.0), install from GitHub:
-```
+```r
 install.packages("devtools")
 devtools::install_github("zumbov2/walkalytics")
 ```
@@ -20,7 +20,7 @@ devtools::install_github("zumbov2/walkalytics")
 Young Albert failed the entrance examination for ETH Zurich. The 16-year-old is now to move to Aarau to complete his secondary schooling. He doesn't know the town yet and is thinking about buying a bike for his everday life. Let's help Albert decide. He doesn't want to have to walk longer than 10 minutes. 
 
 We define the blokes's most important points-of-interest and call the walkalytics API with the function `isochrome_pois()`. We take Albert's future address as the source location. The function `pois_walktimes()` processes the API response object in such a way that the estimated walking times (in seconds) between the source location and the points-of-interest are returned.
-```
+```r
 # Define Albert's points-of-interest 
 places <- data.frame(id = c("School", "Railway Station", "Affenkasten (Pub)", "Zurlindeninsel (River Island)"),
                      x = c(895737, 896297, 895620, 895840),
@@ -41,7 +41,7 @@ Lucky Albert. He can save his money. Read more about Albert's life [here](https:
 
 ## Example 2: More details please
 We can go one step further and extract high-resolution walking times. For this we use the function `isochrone_esri()`, which returns a response object that contains a base64-encoded gzipped Esri ASCII grid with walking times for every pixel. By using the function `esri_to_sgdf()`, we can convert the encoded Esri ASCII grid to an object of class `SpatialGridDataFrame` or we use `pixel_walktimes()` to directly extract walking times (in seconds) for every pixel with respect to the source location.
-```
+```r
 # Call Walkalytics API and convert response object to SpatialGridDataFrame
 dt <- isochrone_esri(x = 896552, y = 6006578, epsg = 3857, key = key) %>% esri_to_sgdf()
 
@@ -49,7 +49,7 @@ dt <- isochrone_esri(x = 896552, y = 6006578, epsg = 3857, key = key) %>% esri_t
 dt2 <- isochrone_esri(x = 896552, y = 6006578, epsg = 3857, key = key) %>% pixel_walktimes()
 ```
 `dt` can then be displayed graphically using `image()`
-```
+```r
 require(viridisLite)
 image(dt, col = magma(10, direction = -1))
 ```
@@ -57,7 +57,7 @@ image(dt, col = magma(10, direction = -1))
 
 ## Example 3: Public transportation stops for Switzerland
 Beside the isochrone API Walkalytics also offers the possibility of querying [nearby public transportation stops](https://dev.walkalytics.com/docs/services/54213b7b352a401664d5c48a/operations/5551ed9350d8000f54f144a2?). The query works in the almost same way as the previous examples. 
-```
+```r
 # Call the Walkalytics pubtrans API and extract the walking times to the stations
 pubtrans_ch_nearby(x = 8.528872, y = 47.382902, max_walktime = 10, key = key) %>% get_stops()  
 
