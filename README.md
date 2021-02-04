@@ -5,7 +5,9 @@
 [![cranlogs](https://cranlogs.r-pkg.org/badges/grand-total/walkalytics)](http://cran.rstudio.com/web/packages/walkalytics/index.html)
 
 # Walkalytics
-<s>This R package is an interface to the [Walkalytics API](https://dev.walkalytics.com) that calculates the walking isochrone for a source location based on map data. To get an API key, you need to register at https://dev.walkalytics.com/signin. With the free starter account, you can make up to 100 calls a week to the API. More information (geographical availability of the service etc.) can be found [here](https://www.walkalytics.com).</s> Update 2021-02-04: The [Walkalytics API] is no longer available.
+<s>This R package is an interface to the [Walkalytics API](https://dev.walkalytics.com) that calculates the walking isochrone for a source location based on map data. To get an API key, you need to register at https://dev.walkalytics.com/signin. With the free starter account, you can make up to 100 calls a week to the API. More information (geographical availability of the service etc.) can be found [here](https://www.walkalytics.com).</s>  
+
+**Update 2021-02-04: The [Walkalytics API] is no longer available.**
 
 ## Installation
 Version 0.1.0 is on CRAN, and you can install it by:
